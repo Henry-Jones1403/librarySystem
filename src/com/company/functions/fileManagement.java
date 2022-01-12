@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class fileManagement {
 
-    private static File database = new File("BookDatabase.txt");
+    public static File database = new File("BookDatabase.txt");
 
     public static void fileCreator() {
         try {

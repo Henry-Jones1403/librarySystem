@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import com.company.functions.Members;
 import com.company.functions.fileManagement;
 import com.company.functions.bookObjects;
 
@@ -36,6 +36,7 @@ public class Main {
         for (int i = 0; i < newBooks.size(); i++) {
             System.out.println(newBooks.get(i));
         }
+        System.out.println(Members.members());
     }
 
 
