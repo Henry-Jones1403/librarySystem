@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 
 public class Members {
+    private static File database = new File("Authorisation.txt");
     public static Boolean search(File database, String searchFor, Boolean caseSensitive, int csvValue) {
         ArrayList<String> changedArray = new ArrayList<>();
         Boolean present = false;
@@ -34,18 +35,6 @@ public class Members {
     }
 
     public static Boolean members() {
-        File database = new File("Authorisation.txt");
-        try {
-            if (database.createNewFile()) {
-                System.out.println("A new file has been created");
-            } else {
-                System.out.println("File found");
-            }
-
-        } catch (Exception e) {
-            System.out.println("There was an error " + e);
-        }
-
         Boolean repeat = true;
         while (repeat) {
             String username = fileManagement.getInput("What is your username");
@@ -65,5 +54,10 @@ public class Members {
 
         }
 return false;
+    }
+    public static void memberRegister(){
+        String username = fileManagement.getInput("what will your username be");
+        String password = fileManagement.getInput("what will your password be?");
+        fileManagement.fileWriter(  "\n"+username + "," +password + "\n", true, database);
     }
 }

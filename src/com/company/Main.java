@@ -14,13 +14,22 @@ public class Main {
     private static ArrayList<bookObjects> newBooks = new ArrayList<>();
 
     public static void main(String[] args) {
+        Boolean repeating = true;
+        while(repeating){
+        if(welcome()){
+            String choice = getInput("Welcome too the library menu!!\n Will you be:\n-Adding a book\n-Deleting a book");
         fileManagement.fileCreator();
-        setBook(Integer.parseInt(getInput("How many books will be added")));
-
-        if (getInput("Would you like to delete anything? Y or N").equals("Y")) {
+        if(choice.equalsIgnoreCase("Adding a book") ){
+                setBook(Integer.parseInt(getInput("How many books will be added")));
+        }else if(choice.equalsIgnoreCase("Deleting a book") ) {
             fileManagement.deleter(getInput("What is the name of the book"));
         }
-    }
+
+
+        }if(fileManagement.getInput("Do you require any more services?").equalsIgnoreCase("no")){
+            repeating = false;
+            }
+    }}
 
     public static void setBook(int numberAdded) {
         for (int i = 0; i < numberAdded; i++) {
@@ -29,17 +38,21 @@ public class Main {
             String author = getInput("Who is the Author of book number " + (i + 1));
             String genre = getInput("What is the Genre of book number " + (i + 1));
             bookList.add(bookTitle + "," + ISBN + "," + author + "," + genre);
-            fileManagement.fileWriter(bookTitle + "," + ISBN + "," + author + "," + genre, true);
-            bookObjects newBook = new bookObjects(bookTitle, Integer.parseInt(ISBN), author, genre);
-            newBooks.add(newBook);
+            fileManagement.fileWriter(bookTitle + "," + ISBN + "," + author + "," + genre, true, fileManagement.database);
         }
         for (int i = 0; i < newBooks.size(); i++) {
             System.out.println(newBooks.get(i));
         }
-        System.out.println(Members.members());
     }
 
 
-
+    public static Boolean welcome(){
+        System.out.println("Welcome to the library management system!!");
+        String choice= getInput("Would you like to sign in or do you need to register");
+        if (choice.equals("register")){
+            Members.memberRegister();
+            return true;
+        }return Members.members();
+}
 
 }

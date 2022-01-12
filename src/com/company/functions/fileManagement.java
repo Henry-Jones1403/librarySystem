@@ -13,18 +13,15 @@ public class fileManagement {
         try {
             if (database.createNewFile()) {
                 System.out.println("A new file has been created");
-            } else {
-                System.out.println("File found");
             }
-
         } catch (Exception e) {
             System.out.println("There was an error " + e);
         }
     }
 
-    public static void fileWriter(String newItem, boolean overwrite) {
+    public static void fileWriter(String newItem, boolean overwrite, File file) {
         try {
-            FileWriter writer = new FileWriter(database.getName(), overwrite);
+            FileWriter writer = new FileWriter(file.getName(), overwrite);
             writer.write(newItem + "\n");
             writer.close();
         } catch (Exception e) {
@@ -48,7 +45,7 @@ public class fileManagement {
                 }String altered  = "";
                 for (int i = 0; i <changedArray.size() ; i++) {
                     altered = altered  + changedArray.get(i) + "\n";
-                } fileWriter(altered, false);
+                } fileWriter(altered, false, database);
 
 
             }
