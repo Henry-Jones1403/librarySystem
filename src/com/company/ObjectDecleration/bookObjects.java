@@ -1,4 +1,4 @@
-package com.company.functions;
+package com.company.ObjectDecleration;
 
 public class bookObjects {
 

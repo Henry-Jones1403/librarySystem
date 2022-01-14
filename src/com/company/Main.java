@@ -1,10 +1,10 @@
 package com.company;
 
 import java.util.ArrayList;
-import java.util.Scanner;
+
 import com.company.functions.Members;
 import com.company.functions.fileManagement;
-import com.company.functions.bookObjects;
+import com.company.ObjectDecleration.bookObjects;
 
 import static com.company.functions.fileManagement.getInput;
 
